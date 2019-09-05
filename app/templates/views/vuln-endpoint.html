@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Vulnerable endpoint {% endblock title %}
+
+{% block content %}
+
+    <h1>Vulnerable endpoint</h1>
+    <ul class="list-group list-group-flush">
+        {% for d in data.users %}
+            <li class="list-group-item border-0"><b>Username:</b> {{ d["username"] }}</li>
+            <li class="list-group-item border-0"><b>Comment:</b> {{ d["message"] | safe }}</li>
+            <br>
+        {% endfor %}
+    </ul>
+{% endblock content %}
