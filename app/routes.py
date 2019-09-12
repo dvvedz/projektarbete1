@@ -1,4 +1,4 @@
-from flask import Flask,render_template,Blueprint, request, url_for, session, redirect, json, jsonify
+from flask import Flask,render_template,Blueprint, request, url_for, session, redirect, json, jsonify, make_response, flash
 import requests
 
 page = Blueprint("page", __name__, template_folder="templates")
@@ -41,14 +41,24 @@ def get_one_user(id):
 # POST - Create user
 @page.route("/api/users", methods=["POST"])
 def create_user():
-    users.append({ "username": request.form["username"], "message": request.form["message"] })
-    return redirect(url_for("page.index"))
+    if "/" in request.form["message"]:
+        users.append({ "username": request.form["username"], "message": "Harmfull message" })
+        return redirect(url_for("page.vuln_endpoint"))
+    else:
+        users.append({ "username": request.form["username"], "message": request.form["message"] })
+        return redirect(url_for("page.vuln_endpoint"))
+
+    return render_template("views/index.html")
 
 
 # Vulnerable endpoint
 @page.route("/vuln-endpoint")
-def vuln_endopoint():
+def vuln_endpoint():
     api_url = requests.get("http://localhost:5000/api/users")
     data = json.loads(api_url.text)
-
     return render_template("views/vuln-endpoint.html", data=data)
+
+
+@page.route("/test")
+def test():
+    return render_template("views/test.html")

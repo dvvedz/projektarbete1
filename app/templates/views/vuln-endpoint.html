@@ -3,13 +3,19 @@
 {% block title %} Vulnerable endpoint {% endblock title %}
 
 {% block content %}
-
-    <h1>Vulnerable endpoint</h1>
-    <ul class="list-group list-group-flush">
-        {% for d in data.users %}
-            <li class="list-group-item border-0"><b>Username:</b> {{ d["username"] }}</li>
-            <li class="list-group-item border-0"><b>Comment:</b> {{ d["message"] | safe }}</li>
+    <style>
+        body {
+            align-items: unset
+        }
+    </style>
+    <div class="container">
+        <h1>Vulnerable endpoint</h1>
+        <ul>
+            {% for d in data.users %}
+            <li><b>Username:</b> <a href="/api/users/{{ d['username'] }}">{{ d["username"] }}</a></li>
+            <li><b>Comment:</b> {{ d["message"] | safe }}</li>
             <br>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}
