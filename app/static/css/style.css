@@ -1,0 +1,24 @@
+body {
+  background: linear-gradient(#8D44AD, #297FB8);
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+}
+body header h1 {
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+}
+body main {
+  padding-bottom: 200px;
+}
+body main textarea {
+  max-height: 200px;
+}
+body footer {
+  flex: 1 0 auto;
+}
+
+/*# sourceMappingURL=style.css.map */

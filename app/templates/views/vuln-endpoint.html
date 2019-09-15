@@ -3,19 +3,24 @@
 {% block title %} Vulnerable endpoint {% endblock title %}
 
 {% block content %}
-    <style>
-        body {
-            align-items: unset
-        }
-    </style>
-    <div class="container">
-        <h1>Vulnerable endpoint</h1>
-        <ul>
-            {% for d in data.users %}
-            <li><b>Username:</b> <a href="/api/users/{{ d['username'] }}">{{ d["username"] }}</a></li>
-            <li><b>Comment:</b> {{ d["message"] | safe }}</li>
-            <br>
-            {% endfor %}
-        </ul>
-    </div>
+    {% include 'includes/nav.html' %}
+    <header class="container">
+        <h1 class="animated fadeInDown white-text">Vulnerable endpoint</h1>
+    </header>
+    <main>
+        <div class="container">
+            <ul class="collection animated fadeInLeft z-depth-4">
+                {% for d in data.users %}
+                    <li class="collection-item avatar">
+                        <i class="circle material-icons">account_circle</i>
+                        <span class="title"><a href="/api/users/{{ d['username'] }}">{{ d["username"] }}</a></span>
+                        <br>
+                        <p><b>Comment:</b></p>
+                        <p>{{ d["message"] | safe }} </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+    {% include 'includes/footer.html' %}
 {% endblock content %}

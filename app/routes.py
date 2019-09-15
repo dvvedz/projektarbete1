@@ -59,6 +59,10 @@ def vuln_endpoint():
     return render_template("views/vuln-endpoint.html", data=data)
 
 
+@page.route("/what-is-xss")
+def what_is_xss():
+    return render_template("views/what-is-xss.html")
+
 @page.route("/test")
 def test():
     return render_template("views/test.html")

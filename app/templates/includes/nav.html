@@ -1,0 +1,22 @@
+<div class="navbar-fixed">
+    <nav class="grey darken-3">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="{{ url_for('page.index') }}" class="brand-logo">XSS</a>
+                <a href="#" data-target="mobile-dropdown" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ url_for('page.index') }}">Home</a></li>
+                    <li><a href="{{ url_for('page.vuln_endpoint') }}">Vulnerable endpoint </a></li>
+                    <li><a href="{{ url_for('page.get_users') }}">All users in JSON format </a></li>
+                    <li><a href="{{ url_for('page.what_is_xss') }}">XSS?</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<ul class="sidenav" id="mobile-dropdown">
+    <br>
+    <li><a href="{{ url_for('page.vuln_endpoint') }}">Vulnerable endpoint </a></li>
+    <li><a href="{{ url_for('page.get_users') }}">All users in JSON format </a></li>
+    <li><a href="{{ url_for('page.what_is_xss') }}">XSS?</a></li>
+</ul>

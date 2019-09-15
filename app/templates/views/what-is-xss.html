@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} What is XSS {% endblock title %}
+
+{% block content %}
+    {% include 'includes/nav.html' %}
+        <header class="container">
+            <h1 class="animated fadeInDown white-text">Vad är cross site scripting (XSS)?</h1>
+        </header>
+        <main class="container">
+            <p class="white-text animated fadeInUp flow-text">
+                Cross-Site Scripting händer när en person kan exekvera javascript kod där han/hon inte borde få göra det, till exempelt på denna sida jag har gjort. En XSS attack kan se ut som på bilden nedan:
+            </p>
+            <img src="https://i.gyazo.com/19aa7321458361986b4d60429823af16.gif" class="responsive-img z-depth-5 animated fadeInUp" alt="GIF of XSS injection" />
+            <p class="flow-text white-text animated fadeInUp">
+
+                Den här koden kommer vissa en alert ruta när man går till <b>/vuln-endpoint</b>. Om man försker att skriva in ett element, till exempelt <b>script</b> så kommer den fritt tillåta det eftersom att special karaktärerna inte är kodade eller validerade. Applikationen litar fullt ut på att användaren av webappen inte kommer skriva in någon skadlig kod i något av fälten... Det är inte bra. All data som användaren kan modifiera ska kollas på minst en extra gång innan produktion för att undvika i det här fallet XSS.
+            </p>
+        </main>
+    {% include 'includes/footer.html' %}
+
+{% endblock content %}
