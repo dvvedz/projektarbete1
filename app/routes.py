@@ -50,6 +50,15 @@ def create_user():
 
     return render_template("views/index.html")
 
+# DELETE a user
+# @page.route("/api/users/<id>", methods=["DELETE"])
+# def delete_one_user(id):
+#     for user in users:
+#         if user["username"] == id:
+#             users
+#             return redirect(url_for("page.get_users"))
+
+#     return jsonify({"error": "No user found" }), 400
 
 # Vulnerable endpoint
 @page.route("/vuln-endpoint")

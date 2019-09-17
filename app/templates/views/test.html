@@ -3,6 +3,25 @@
 {% block title %} Title {% endblock title %}
 
 {% block content %}
+    <div class="container">
+        <form method="GET">
+            <input value="" name="xss_input" id="reflected-xss" type="text" class="validate white-text">
+            <label class="active white-text" for="reflected-xss">First Name</label>
+            <button class="btn waves-effect waves-light" id="vuln-btn" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
 
+        <p class="white-text" id="vuln-show">Show text:</p>
+    </div>
+    <script>
+        let inEle = document.querySelector("#reflected-xss");
+        let btnEle = document.querySelector("#vuln-btn");
+        let showEle = document.querySelector("#vuln-show");
+        let url = ""
+        btnEle.addEventListener("click", ()=> {
+            showEle.innerHTML = `Hello ${this} !`;
+        });
+    </script>
 
 {% endblock content %}

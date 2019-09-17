@@ -11,12 +11,11 @@
             <p class="white-text animated fadeInUp flow-text">
                 Cross-Site Scripting (XSS) är en typ av “injection” som oftast är använd för att mata in skadlig javascript kod på en
                 webbsida. Det finns flera olika typer av XSS attacker, så som reflected XSS, stored XSS, self XSS och DOM XSS. Den här
-                sidan har jag gjort sårbar till stored XSS, en av de allvarligare XSS typerna och på bilden under kan ni se ett lätt
+                sidan jag har gjort är sårbar till stored XSS specefikt, en av de allvarligare XSS typerna och på bilden under kan ni se ett lätt
                 exempel:
             </p>
             <img src="https://i.gyazo.com/19aa7321458361986b4d60429823af16.gif" class="responsive-img z-depth-5 animated fadeInUp" alt="GIF of XSS injection" />
             <p class="flow-text white-text animated fadeInUp">
-
                 Den här koden kommer visa en alert ruta för all användare som navigerar sig till <b>/vuln-endpoint</b> i detta fall. Applikation gör det för att special karaktärerna inte är kodade eller validerade, samt så litar applikationen fullt ut på att användaren av appen inte kommer skriva in någon skadlig kod i något av fälten... Det är inte bra. All data som användaren kan modifiera ska kollas på minst en extra gång innan produktion för att undvika i det här fallet XSS.
             </p>
         </main>
