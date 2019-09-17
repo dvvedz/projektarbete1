@@ -50,20 +50,10 @@ def create_user():
 
     return render_template("views/index.html")
 
-# DELETE a user
-# @page.route("/api/users/<id>", methods=["DELETE"])
-# def delete_one_user(id):
-#     for user in users:
-#         if user["username"] == id:
-#             users
-#             return redirect(url_for("page.get_users"))
-
-#     return jsonify({"error": "No user found" }), 400
-
 # Vulnerable endpoint
 @page.route("/vuln-endpoint")
 def vuln_endpoint():
-    api_url = requests.get("http://localhost:5000/api/users")
+    api_url = requests.get("https://aqueous-falls-67258.herokuapp.com/api/users")
     data = json.loads(api_url.text)
     return render_template("views/vuln-endpoint.html", data=data)
 
